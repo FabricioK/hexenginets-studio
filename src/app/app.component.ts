@@ -13,12 +13,15 @@ export class AppComponent implements AfterContentInit {
   engine: Engine;
   title = 'app';
 
+  code: string = 'function x() {\nconsole.log("Hello world!");\n}';
+  language: string = 'typescript';
+
   constructor() {
     this.engine = new Engine();
   }
 
-  ngAfterContentInit() { 
-    
+  ngAfterContentInit() {
+
     var scene = new Scene({
       title: 'scene01',
       innerHeight: window.innerHeight,

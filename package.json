@@ -43,6 +43,8 @@
     "codelyzer": "~3.0.1",
     "electron": "^1.7.9",
     "electron-reload": "^1.2.2",
+    "gulp": "^3.9.1",
+    "gulp-require-modules": "^1.1.2",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
     "karma": "~1.7.0",

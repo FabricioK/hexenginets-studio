@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Hexenginets Studio</title>
+  <base href="/">
+  <link rel="stylesheet" data-name="vs/editor/editor.main" href="node_modules/monaco-editor/min/vs/editor/editor.main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root></app-root>
+<script type="text/javascript" src="inline.bundle.js"></script><script type="text/javascript" src="polyfills.bundle.js"></script><script type="text/javascript" src="styles.bundle.js"></script><script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body>
+<script>
+  // Monaco uses a custom amd loader that over-rides node's require.
+  // Keep a reference to node's require so we can restore it after executing the amd loader file.
+  var nodeRequire = require;
+</script>
+<script src="node_modules/monaco-editor/min/vs/loader.js"></script>
+<script>
+  // Save Monaco's amd require and restore Node's require
+  var amdRequire = require;
+  require = nodeRequire;
+  require.nodeRequire = require;
+</script>
+
+<script>
+  amdRequire.config({
+    baseUrl: 'node_modules/monaco-editor/min'
+  });
+  // workaround monaco-css not understanding the environment
+  self.module = undefined;
+  // workaround monaco-typescript not understanding the environment
+  self.process.browser = true;
+  amdRequire(['vs/editor/editor.main'], function() {
+    var editor = monaco.editor.create(document.getElementById('container'), {
+      value: [
+        'function x() {',
+        '\tconsole.log("Hello world!");',
+        '}'
+      ].join('\n'),
+      language: 'javascript'
+    });
+  });
+</script>
+</html>
