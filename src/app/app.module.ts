@@ -1,18 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {MatGridListModule} from '@angular/material';
+import { MatGridListModule } from '@angular/material';
 import { NgModule } from '@angular/core';
-import { MonacoEditorComponent } from 'ng2-monaco-editor';
 import { AppComponent } from './app.component';
+import { MonacoEditorComponent } from './monaco-editor/monaco-editor.component';
+import { MonacoEditorLoader } from './monaco-editor/monacoeditorloader';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MonacoEditorComponent
   ],
   imports: [
     MatGridListModule,
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    MonacoEditorLoader
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
