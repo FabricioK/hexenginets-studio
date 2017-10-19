@@ -1,9 +1,8 @@
 var gulp = require('gulp');
 var requireModules = require('gulp-require-modules');
- 
-var dist = 'assets/monaco/'
+var dist = 'src/assets/monaco/';
 gulp.task('default', function () {
-    return gulp.src('src/*.js')
-        .pipe(requireModules({dist: false}))
+    return gulp.src('./node_modules/monaco-editor/min/**/*.*')
+        .pipe(requireModules({dist: true, fromDirectory:'node_modules/monaco-editor/min', distDirectory: dist}))
         .pipe(gulp.dest(dist));
 });
